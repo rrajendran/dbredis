@@ -17,7 +17,7 @@ public class SessionServiceImplTest {
 	@Test
 	public void test(){
 		Long sessionCount = 0l;
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < Integer.parseInt("999999"); i++) {
 			sessionCount = sessionService.getSessionCount();
 		}
 	
