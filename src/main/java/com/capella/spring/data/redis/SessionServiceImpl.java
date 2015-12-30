@@ -1,4 +1,4 @@
-package com.boohoo.redis.service;
+package com.capella.spring.data.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -10,8 +10,12 @@ public class SessionServiceImpl implements SessionService{
 	@Autowired
 	RedisTemplate<String, String> redisTemplate;
 	
-	public Long getSessionCount() { 
-		return redisTemplate.boundValueOps("pageViews").increment(1l);
+	public Long getSessionCount() {
+		return Long.valueOf( redisTemplate.boundValueOps("pageViews").get());
+	}
+
+	public void setSessionCount(long count) {
+		redisTemplate.boundValueOps("pageViews").set(String.valueOf(count));
 	}
 
 }
